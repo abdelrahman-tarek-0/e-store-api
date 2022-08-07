@@ -6,6 +6,7 @@ const helmet = require('helmet')
 const expressRateLimit = require('express-rate-limit')
 const errorHandlerMiddleware = require('./middleware/error.middleware.js')
 const config = require('./config')
+const pool = require('./database/index')
 
 // config the server
 const app = express()
