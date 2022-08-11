@@ -9,7 +9,9 @@
     "start": "node src/index.js",
     "eslint": "eslint --ext .js,.jsx **/*.js  --fix",
     "prettier": "prettier --write **/*.js",
-    "format": "npm run prettier && npm run eslint"
+    "format": "npm run prettier && npm run eslint",
+    "migrate:up": "db-migrate up",
+    "migrate:down": "db-migrate reset"
   },
   "author": "https://github.com/abdelrahman-tarek-0",
   "license": "ISC",
