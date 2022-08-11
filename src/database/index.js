@@ -1,7 +1,7 @@
 const pg = require('pg')
 const config = require('../config')
 let dbConfig = {}
-if (config.env === 'production') {
+if (config.env === 'production' || config.env ==='prod') {
    dbConfig = {
       connectionString: config.db_url,
       ssl: {
