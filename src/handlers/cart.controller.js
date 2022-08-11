@@ -24,7 +24,7 @@ const getCart = async (req, res,next) => {
 
 const createCart = async (req, res,next) => {
     try {
-        const cart = await CartModel.createCart(req.query.id, req.body.items)
+        const cart = await CartModel.createCart(req.body.id, req.body.items)
         res.json(resBuilder(cart))
         return
     } catch (error) {
@@ -33,7 +33,7 @@ const createCart = async (req, res,next) => {
 }
 const updateCart = async (req, res,next) => {
     try {
-        const cart = await CartModel.updateCart(req.query.id, req.body.items)
+        const cart = await CartModel.updateCart(req.body.id, req.body.items)
         res.json(resBuilder(cart))
         return
     } catch (error) {
@@ -42,7 +42,7 @@ const updateCart = async (req, res,next) => {
 }
 const deleteCart = async (req, res,next) => {
     try {
-        const cart = await CartModel.deleteCart(req.query.id)
+        const cart = await CartModel.deleteCart(req.body.id)
         res.json(resBuilder(cart))
         return
     } catch (error) {

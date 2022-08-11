@@ -32,7 +32,7 @@ const createProduct = async (req,res,next) => {
 }
 const updateProduct = async (req,res,next) => {
    try {
-      const product = await ProductsModel.updateProduct(req.query.id, req.body)
+      const product = await ProductsModel.updateProduct(req.body.id, req.body)
       res.json(resBuilder(product))
       return
    } catch (error) {
@@ -41,7 +41,7 @@ const updateProduct = async (req,res,next) => {
 }
 const deleteProduct = async (req,res,next) => {
    try {
-      const product = await ProductsModel.deleteProduct(req.query.id)
+      const product = await ProductsModel.deleteProduct(req.body.id)
       res.json(resBuilder(product))
       return
    } catch (error) {

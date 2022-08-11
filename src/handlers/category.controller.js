@@ -34,7 +34,7 @@ const createCategory = async (req, res,next) => {
 const updateCategory = async (req, res,next) => {
    try {
       const category = await CategoryModel.updateCategory(
-         req.query.id,
+         req.body.id,
          req.body
       )
       res.json(resBuilder(category))
@@ -45,7 +45,7 @@ const updateCategory = async (req, res,next) => {
 }
 const deleteCategory = async (req, res,next) => {
    try {
-      const category = await CategoryModel.deleteCategory(req.query.id)
+      const category = await CategoryModel.deleteCategory(req.body.id)
       res.json(resBuilder(category))
       return
    } catch (error) {
