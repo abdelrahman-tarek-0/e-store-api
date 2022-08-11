@@ -15,5 +15,4 @@ routes.use('/category', categoryRoutes)
 routes.use('/cart', cartRoutes)
 routes.use('/testimonials', testimonialsRoutes)
 
-
 module.exports = routes

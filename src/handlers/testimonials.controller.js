@@ -1,5 +1,3 @@
-const name = (req, res) => {
-   
-}
+const name = (req, res) => {}
 
 module.exports = { name }

@@ -6,7 +6,6 @@ const helmet = require('helmet')
 const expressRateLimit = require('express-rate-limit')
 const errorHandlerMiddleware = require('./middleware/error.middleware.js')
 const config = require('./config')
-const pool = require('./database/index')
 
 // config the server
 const app = express()
@@ -27,12 +26,10 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-   res.json({ message: `hi! refer to the documentation at <link>`})
+   res.json({ message: 'hi! refer to the documentation at <link>' })
 })
 
 app.use('/api', routes)
-
-
 
 // error handling
 app.use(errorHandlerMiddleware)

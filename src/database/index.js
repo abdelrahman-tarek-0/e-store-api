@@ -1,7 +1,7 @@
 const pg = require('pg')
 const config = require('../config')
 let dbConfig = {}
-if (config.env === 'production' || config.env ==='prod') {
+if (config.env === 'production' || config.env === 'prod') {
    dbConfig = {
       connectionString: config.db_url,
       ssl: {
@@ -20,7 +20,7 @@ if (config.env === 'production' || config.env ==='prod') {
 
 const pool = new pg.Pool(dbConfig)
 pool.on('error', (error) => {
-    throw new Error('Error connecting to database: ' + error.message);
+   throw new Error('Error connecting to database: ' + error.message)
 })
 
 module.exports = pool
