@@ -40,13 +40,13 @@ class ProductsModel {
             VALUES ($1, $2, $3, $4, $5, $6, $7)
             `,
             [
-                product.name,
-                product.rating,
-                product.price,
-                product.description,
-                product.image,
-                product.stock,
-                product.category_id,
+               product.name,
+               product.rating,
+               product.price,
+               product.description,
+               product.image,
+               product.stock,
+               product.category_id,
             ]
          )
          connection.release()
@@ -60,46 +60,46 @@ class ProductsModel {
    async updateProduct(id, product) {
       try {
          const connection = await this.db.connect()
-         let query = `UPDATE products SET `
-         let values = []
+         let query = 'UPDATE products SET '
+         const values = []
          let i = 1
-         if(product.name){
-            query += ` name = $` + i + `,`
+         if (product.name) {
+            query += ' name = $' + i + ','
             values.push(product.name)
             i++
          }
-         if(product.rating){
-            query += ` rating = $` + i + `,`
+         if (product.rating) {
+            query += ' rating = $' + i + ','
             values.push(product.rating)
             i++
          }
-         if(product.price){
-            query += ` price = $` + i + `,`
+         if (product.price) {
+            query += ' price = $' + i + ','
             values.push(product.price)
             i++
          }
-         if(product.description){
-            query += ` description = $` + i + `,`
+         if (product.description) {
+            query += ' description = $' + i + ','
             values.push(product.description)
             i++
          }
-         if(product.images){
-            query += ` images = $` + i + `,`
+         if (product.images) {
+            query += ' images = $' + i + ','
             values.push(product.images)
             i++
          }
-         if(product.stock){
-            query += ` stock = $` + i + `,`
+         if (product.stock) {
+            query += ' stock = $' + i + ','
             values.push(product.stock)
             i++
          }
-         if(product.category_id){
-            query += ` category_id = $` + i + `,`
+         if (product.category_id) {
+            query += ' category_id = $' + i + ','
             values.push(product.category_id)
             i++
          }
          query = query.slice(0, -1)
-         query += ` WHERE id = $` + i
+         query += ' WHERE id = $' + i
          values.push(id)
          const result = await connection.query(query, values)
          connection.release()

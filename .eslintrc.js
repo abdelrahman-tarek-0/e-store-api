@@ -18,5 +18,6 @@ module.exports = {
       'no-var': 'error',
       'prefer-const': 'error',
       'new-cap': 0,
+      'require-jsdoc': 0,
    },
 }

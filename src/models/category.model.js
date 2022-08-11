@@ -1,11 +1,5 @@
 const db = require('../database/index.js')
 
-// CREATE TABLE category(
-//     id SERIAL PRIMARY KEY,
-//     name VARCHAR(50) NOT NULL UNIQUE
-// );
-
-
 class CategoryModel {
    constructor() {
       this.db = db
@@ -45,9 +39,7 @@ class CategoryModel {
             `INSERT INTO category (name)
             VALUES ($1)
             `,
-            [
-                category.name,
-            ]
+            [category.name]
          )
          connection.release()
          return result.rows[0]
@@ -64,10 +56,7 @@ class CategoryModel {
             `UPDATE category SET name = $1
             WHERE id = $2
             `,
-            [
-                category.name,
-                id,
-            ]
+            [category.name, id]
          )
          connection.release()
          return result.rows[0]
@@ -84,17 +73,14 @@ class CategoryModel {
             `DELETE FROM category
             WHERE id = $1
             `,
-            [
-                id,
-            ]
+            [id]
          )
-            connection.release()
-            return result.rows[0]
-        } catch (error) {
-            throw new Error(error)
-        }
-    }
+         connection.release()
+         return result.rows[0]
+      } catch (error) {
+         throw new Error(error)
+      }
+   }
 }
-
 
 module.exports = CategoryModel
