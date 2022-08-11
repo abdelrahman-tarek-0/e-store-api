@@ -100,6 +100,7 @@ class ProductsModel {
          }
          query = query.slice(0, -1)
          query += ' WHERE id = $' + i
+         query += ' RETURNING *'
          values.push(id)
          const result = await connection.query(query, values)
          connection.release()
