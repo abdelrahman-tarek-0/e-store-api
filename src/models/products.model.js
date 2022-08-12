@@ -44,7 +44,7 @@ class ProductsModel {
                product.rating,
                product.price,
                product.description,
-               product.image,
+               product.images,
                product.stock,
                product.category_id,
             ]
