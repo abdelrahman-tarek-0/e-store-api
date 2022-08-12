@@ -1,14 +1,27 @@
 const serviceAccount = require('../../config_auth_firebase.json')
 const {initializeApp} = require('firebase-admin/app')
 const admin = require('firebase-admin')
-const cartModel = require('../models/cart.model.js')
 const {getAuth} = require('firebase-admin/auth')
+const db = require('../database/index.js')
 
-const CartModel = new cartModel()
 
 
-// make database
-let adminsId = ['DtTsJGP7D8XMmBmoHE2hS7Ta20w2','vZQ37Nc7yreZauG5xIDqCEZ1XZg1']
+async function getAdmins (){
+    try {
+       const connection = await db.connect()
+       const result = await connection.query('SELECT * FROM admin')
+       connection.release()
+       return result.rows
+    } catch (error) {
+       throw new Error(error)
+    }
+}
+
+
+let adminsId
+
+
+
 
 
 const app = initializeApp({
@@ -18,7 +31,9 @@ const app = initializeApp({
 })
 
 
-const authAdminMiddleware = (req, res, next) => {
+const  authAdminMiddleware = async (req, res, next) => {
+    let adminsId = await getAdmins()
+    adminsId = adminsId.map(admin => admin.uuid)
    let idToken = req.headers.authorization
    idToken = idToken.replace('Bearer ', '')
    if (!idToken) {
@@ -42,7 +57,9 @@ const authAdminMiddleware = (req, res, next) => {
          })
    }
 }
-const authUserMiddleware = (req, res, next) => {
+const authUserMiddleware = async (req, res, next) => {
+    let adminsId = await getAdmins()
+    adminsId = adminsId.map(admin => admin.uuid)
     let idToken = req.headers.authorization
     idToken = idToken.replace('Bearer ', '')
     if (!idToken) {
