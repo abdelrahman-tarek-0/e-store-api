@@ -101,7 +101,7 @@ POST /api/products/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the product created
+        "message": {} // returning json object of the product created
     }
     ```
 <hr />
@@ -133,7 +133,7 @@ PATCH /api/products/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the product updated
+        "message": {} // returning json object of the product updated
     }
     ```
 <hr />
@@ -159,7 +159,7 @@ DELETE /api/products/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the product deleted
+        "message": {} // returning json object of the product deleted
     }
     ```
 <hr />
@@ -237,7 +237,7 @@ POST /api/category/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the category created
+        "message": {} // returning json object of the category created
     }
     ```
 
@@ -264,7 +264,7 @@ PATCH /api/category/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the category updated
+        "message": {} // returning json object of the category updated
     }
     ```
 
@@ -291,7 +291,7 @@ DELETE /api/category/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the category deleted
+        "message": {} // returning json object of the category deleted
     }
     ```
 
@@ -398,7 +398,7 @@ POST /api/cart/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the cart created
+        "message": {} // returning json object of the cart created
     }
     ```
 
@@ -425,7 +425,7 @@ PATCH /api/cart/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the cart updated
+        "message": {} // returning json object of the cart updated
     }
     ```
 
@@ -452,7 +452,7 @@ DELETE /api/cart/
     ```json
     {
         "status": 200,
-        "message": {...} // returning json object of the cart deleted
+        "message": {} // returning json object of the cart deleted
     }
     ```
 
@@ -464,8 +464,11 @@ DELETE /api/cart/
 
 - id `integer`
 - name `string`
-- description `string`
+- rating `float`
 - price `integer`
+- description `string`
+- images `array`
+- stock `integer`
 - category_id `integer`
 - created_at `string`
 
@@ -485,6 +488,7 @@ DELETE /api/cart/
 ### admin
 - id `integer`
 - uuid `string`
+- created_at `string`
 
 ## Database schema
 ![Database schema](https://cdn.discordapp.com/attachments/625010807939399742/1007912933025656862/unknown.png)
