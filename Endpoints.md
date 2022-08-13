@@ -163,6 +163,7 @@ DELETE /api/products/
     }
     ```
 <hr />
+
 # Category endpoints
 
 _Get all category [no auth required]_
