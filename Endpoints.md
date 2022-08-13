@@ -491,4 +491,4 @@ DELETE /api/cart/
 - created_at `string`
 
 ## Database schema
-![Database schema](https://cdn.discordapp.com/attachments/625010807939399742/1007912933025656862/unknown.png)
+![Database schema](https://cdn.discordapp.com/attachments/654613346452242434/1007930690450501652/unknown.png)
