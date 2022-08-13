@@ -33,40 +33,39 @@ class cartModel {
       try {
          const connection = await this.db.connect()
          const products = await connection.query('SELECT * FROM products')
+         connection.release()
          const productIds = products.rows.map((product) => product.id)
-         const itemsArray = Object.keys(items)
-         const itemsArrayNumber = itemsArray.map(Number)
-         const itemValues = Object.values(items)
 
-         for (let i = 0; i < itemsArrayNumber.length; i++) {
-            if (!productIds.includes(itemsArrayNumber[i])) {
-               throw new Error(
-                  `Product with id: ${itemsArrayNumber[i]}  does not exist`
-               )
+         const itemsArray = Object.keys(items)
+         const itemsId = itemsArray.map(Number)
+
+         const itemValues = Object.values(items)
+         for (let i = 0; i < itemsId.length; i++) {
+            if (!productIds.includes(itemsId[i])) {
+               throw new Error(`Product with id: ${itemsId[i]}  does not exist`)
             } else {
                if (
                   itemValues[i] >
-                  products.rows.find(
-                     (product) => product.id === itemsArrayNumber[i]
-                  ).stock
+                  products.rows.find((product) => product.id === itemsId[i])
+                     .stock
                ) {
                   throw new Error(
                      'Not enough stock for product: ' +
                         products.rows.find(
-                           (product) => product.id === itemsArrayNumber[i]
+                           (product) => product.id === itemsId[i]
                         ).name +
                         ' -- with id ' +
-                        itemsArrayNumber[i]
+                        itemsId[i]
                   )
                }
             }
          }
-
+         const connection2 = await this.db.connect()
          const result = await connection.query(
             'INSERT INTO cart (user_id,items) VALUES ($1,$2) RETURNING *',
             [userId, items]
          )
-         connection.release()
+         connection2.release()
          return result.rows[0]
       } catch (error) {
          throw new Error(error)

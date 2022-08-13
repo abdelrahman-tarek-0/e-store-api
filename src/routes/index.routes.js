@@ -9,7 +9,7 @@ routes.get('/', (req, res) => {
    res.json({ message: 'main api route' })
 })
 
-routes.use('/products', productsRoutes)
+routes.use('/product', productsRoutes)
 routes.use('/category', categoryRoutes)
 routes.use('/cart', cartRoutes)
 

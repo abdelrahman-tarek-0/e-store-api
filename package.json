@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine",
     "dev": "nodemon ./src/index.js",
     "start": "node src/index.js",
     "eslint": "eslint --ext .js,.jsx **/*.js  --fix",
     "prettier": "prettier --write **/*.js",
     "format": "npm run prettier && npm run eslint",
     "migrate:up": "db-migrate up",
-    "migrate:down": "db-migrate reset"
+    "migrate:down": "db-migrate reset",
+    "heroku-postbuild": "npm run migrate:up"
   },
   "author": "https://github.com/abdelrahman-tarek-0",
   "license": "ISC",

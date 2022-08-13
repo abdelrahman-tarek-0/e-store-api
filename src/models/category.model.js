@@ -25,6 +25,7 @@ class CategoryModel {
             'SELECT * FROM category WHERE id = $1',
             [id]
          )
+         connection.release()
          return result.rows[0]
       } catch (error) {
          throw new Error(error)

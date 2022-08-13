@@ -9,7 +9,7 @@ const config = require('./config')
 
 // config the server
 const app = express()
-const PORT = config.port | 3000
+const PORT = config.port
 
 app.use(morgan('dev'))
 app.use(

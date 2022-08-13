@@ -16,5 +16,13 @@
         "password":{"ENV":"DB_PASSWORD"},
         "database":{"ENV":"DB_TEST"}
     },
-    "prod":{"ENV":"DATABASE_URL"}
+    "production":{"ssl": "true","ENV":"DATABASE_URL"},
+    "staging": {
+        "overwrite": {
+          "driver": "pg",
+          "ssl": {
+            "rejectUnauthorized": false
+          }
+        }
+      }
 }
