@@ -40,7 +40,6 @@ GET localhost:3000/api/products/all
         ]
     }
 
-
 <hr />
 
 _Get one product [no auth required]_

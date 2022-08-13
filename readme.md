@@ -101,3 +101,20 @@ firebase is handling user auth for us<br>
     ```pash
         npm run format
     ```
+
+## Directory structure
+```
+root:.
+    ├───migrations
+    │   └───sqls
+    ├───spec
+    │   └───support
+    └───src
+        ├───database
+        ├───handlers
+        ├───helpers
+        ├───middleware
+        ├───models
+        └───routes
+            └───APIs
+```
