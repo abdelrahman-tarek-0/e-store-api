@@ -2,7 +2,7 @@
 
 _Get all product [no auth required]_
 ```http
-GET localhost:3000/api/products/all
+GET /api/products/all
 ```
 
 - returning "json"
@@ -44,7 +44,7 @@ GET localhost:3000/api/products/all
 
 _Get one product [no auth required]_
 ```http
-GET localhost:3000/api/products?id=3
+GET /api/products?id=3
 ```
 - id query for the product  
 
@@ -77,7 +77,7 @@ GET localhost:3000/api/products?id=3
 _Create product [admin token required]_
 
 ```http
-POST localhost:3000/api/products/
+POST /api/products/
 ```
 - headers for the request
 
@@ -109,7 +109,7 @@ POST localhost:3000/api/products/
 _Update product [admin token required]_
 
 ```http
-PATCH localhost:3000/api/products/
+PATCH /api/products/
 ```
 - headers for the request
 
@@ -141,7 +141,7 @@ PATCH localhost:3000/api/products/
 _Delete product [admin token required]_
 
 ```http
-DELETE localhost:3000/api/products/
+DELETE /api/products/
 ```
 - headers for the request
 
@@ -168,7 +168,7 @@ DELETE localhost:3000/api/products/
 _Get all category [no auth required]_
 
 ```http
-GET localhost:3000/api/category/all
+GET /api/category/all
 ```
 - returning "json"
     ```json
@@ -194,7 +194,7 @@ GET localhost:3000/api/category/all
 _Get one category [no auth required]_
 
 ```http
-GET localhost:3000/api/category?id=1
+GET /api/category?id=1
 ```
 
 - id query for the category  
@@ -218,7 +218,7 @@ GET localhost:3000/api/category?id=1
 _Create category [admin token required]_
 
 ```http
-POST localhost:3000/api/category/
+POST /api/category/
 ```
 - headers for the request
 
@@ -245,7 +245,7 @@ POST localhost:3000/api/category/
 _Update category [admin token required]_
 
 ```http
-PATCH localhost:3000/api/category/
+PATCH /api/category/
 ```
 - headers for the request
 
@@ -272,7 +272,7 @@ PATCH localhost:3000/api/category/
 _Delete category [admin token required]_
 
 ```http
-DELETE localhost:3000/api/category/
+DELETE /api/category/
 ```
 - headers for the request
 
@@ -301,7 +301,7 @@ DELETE localhost:3000/api/category/
 _Get all cart [admin token required]_
 
 ```http
-GET localhost:3000/api/cart/all
+GET /api/cart/all
 ```
 - headers for the request
 
@@ -342,7 +342,7 @@ GET localhost:3000/api/cart/all
 _Get one cart [USER token required]_
 
 ```http
-GET localhost:3000/api/cart?id=1
+GET /api/cart?id=1
 ```
 - headers for the request
 
@@ -378,7 +378,7 @@ GET localhost:3000/api/cart?id=1
 _Create cart [USER token required]_
 
 ```http
-POST localhost:3000/api/cart/
+POST /api/cart/
 ```
 - headers for the request
 
@@ -406,7 +406,7 @@ POST localhost:3000/api/cart/
 _Update cart [USER token required]_
 
 ```http
-PATCH localhost:3000/api/cart/
+PATCH /api/cart/
 ```
 - headers for the request
 
@@ -433,7 +433,7 @@ PATCH localhost:3000/api/cart/
 _Delete cart [USER token required]_
 
 ```http
-DELETE localhost:3000/api/cart/
+DELETE /api/cart/
 ```
 - headers for the request
 
