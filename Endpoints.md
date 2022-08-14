@@ -321,31 +321,77 @@ GET /api/cart/all
 
 - returning "json"
     ```json
+   {
+    "status": 200,
+    "message": [
     {
-        "status": 200,
-        "message": [
-            {
-                "id": 1,
-                "user_id": "...",
-                "items":{ // object key is product id and value is quantity
-                    "1":50,
-                    "9":10,
-                    "2":20
-                }
-                "created_at": "2022-08-12T21:58:09.438Z"
-            },
-            /*....*/ 
-            {
-                "id": 3,
-                "user_id": "...",
-                "items":{ // object key is product id and value is quantity
-                    "4":60,
-                    "2":64
-                }
-                "created_at": "2022-08-12T22:16:44.616Z"
-            }
-        ]
+      "cart": [
+        {
+          "id": 1,
+          "name": "...",
+          "price": 15.5,
+          "stock": 50,
+          "images": [
+            "dawd",
+            "awdad"
+          ],
+          "rating": 4.6,
+          "quantity": 1,
+          "category_id": 1,
+          "description": "adwadaw"
+        },
+        {
+          "id": 2,
+          "name": "...",
+          "price": 15.5,
+          "stock": 50,
+          "images": [
+            "dawd",
+            "awdad"
+          ],
+          "rating": 4.6,
+          "quantity": 3,
+          "category_id": 2,
+          "description": "adwadaw"
+        }
+      ],
+      "user_id": "ahmed",
+    },{
+        "cart": [
+        {
+          "id": 6,
+          "name": "...",
+          "price": 15.5,
+          "stock": 50,
+          "images": [
+            "ggrrg",
+            "awrgrgrgdad"
+          ],
+          "rating": 4.6,
+          "quantity": 1,
+          "category_id": 1,
+          "description": "adwadaw"
+        },
+        {
+          "id": 9,
+          "name": "...",
+          "price": 15.5,
+          "stock": 50,
+          "images": [
+            "wad",
+            "awd"
+          ],
+          "rating": 4.6,
+          "quantity": 3,
+          "category_id": 2,
+          "description": "adwadaw"
+        }
+      ],
+      "user_id": "ahmed"
     }
+    ]
+    }
+
     ```
 <hr />
 
@@ -371,14 +417,36 @@ GET /api/cart?id=1
     {
         "status": 200,
         "message": {
-            "id": 1,
-            "user_id": "...",
-            "items":{ // object key is product id and value is quantity
-                "1":50,
-                "9":10,
-                "2":20
-            }
-            "created_at": "2022-08-12T21:58:09.438Z"
+            "cart": [
+                {
+                    "id": 1,
+                    "name": "...",
+                    "price": 15.5,
+                    "stock": 50,
+                    "images": [
+                        "dawd",
+                        "awdad"
+                    ],
+                    "rating": 4.6,
+                    "quantity": 1,
+                    "category_id": 1,
+                    "description": "adwadaw"
+                },
+                {
+                    "id": 2,
+                    "name": "...",
+                    "price": 15.5,
+                    "stock": 50,
+                    "images": [
+                        "dawd",
+                        "awdad"
+                    ],
+                    "rating": 4.6,
+                    "quantity": 3,
+                    "category_id": 2,
+                    "description": "adwadaw"
+                }
+            ]
         }
     }
     ```
@@ -401,7 +469,6 @@ POST /api/cart/
     | body            | Type     |
     | :---------------| :------- |
     | `user_id`       | `string` |
-    | `items`         | `object` |
 
 - returning "json"
     ```json
@@ -420,15 +487,18 @@ PATCH /api/cart/
 ```
 - headers for the request
 
-    | Header          | Type     | Description                        |
-    | :-------------- | :------- | :--------------------------------- |
-    | `Authorization` | `string` | `need USER token `                 |
+    | Header          | Type     | Description         |
+    | :-------------- | :------- | :------------------ |
+    | `Authorization` | `string` | `need USER token `  |
 
 - body "json" type needed
 
-    | body            | Type     |optional  |
-    | :---------------| :------- |:-------- |
-    | `items`         | `object` |false     |
+    | body            | Type     |optional  | Description                                    |
+    | :---------------| :------- |:-------- | :--------------------------------------------- |
+    | `items_id`      | `integer`|false     | `id of the item you want to update in the cart`|
+    | `action`        | `add,remove,delete`|false     | `add product (quantity if exist) or remove product (remove it if quantity 0) or delete the product from the cart `|
+    | `quantity`      | `integer`|true     | `quantity of the item you want to update in the cart (on add or remove)`|
+    
 
 - returning "json"
     ```json
@@ -453,9 +523,10 @@ DELETE /api/cart/
 
 - body "json" type needed
 
-    | body            | Type     | details                                             |
+    | body            | Type     | Description                                             |
     | :---------------| :------- | :-------------------------------------------------- |
     | `id`            | `integer`| `id of the user created the cart not id of the cart`|
+
 
 - returning "json"
     ```json
@@ -465,39 +536,49 @@ DELETE /api/cart/
     }
     ```
 
+**note**: this endpoint will delete only all the items in the cart and not the cart itself
+    
 <hr />
 
 ## Data Shapes
 
 ### Product
 
-- id `integer`
-- name `string`
-- rating `float`
-- price `integer`
-- description `string`
-- images `array`
-- stock `integer`
-- category_id `integer`
-- created_at `string`
+- id `(integer)`
+- name `(string)`
+- rating `(float)`
+- price `(integer)`
+- description `(string)`
+- images `(array)`
+- stock `(integer)`
+- category_id `(integer)`
+- created_at `(string)`
 
 ### Category
 
-- id `integer`
-- name `string`
-- created_at `string`
+- id `(integer)`
+- name `(string)`
+- created_at `(string)`
 
 ### Cart
 
-- id `integer`
-- user_id `integer`
-- items `object`
-- created_at `string`
+- id `(integer)`
+- user_id `(integer)`
+- created_at `(string)`
+
+## Cart_Product
+
+- cart_id `(integer)`
+- product_id `(integer)`
+- quantity `(integer)`
+- hashed_cart_id `(string)` --
+**note**: to make the user can't create more than 1 order of the same product but this doesn't include quantity 
+- created_at `(string)`
 
 ### admin
-- id `integer`
-- uuid `string`
-- created_at `string`
+- id `(integer)`
+- uuid `(string)`
+- created_at `(string)`
 
 ## Database schema
-![Database schema](https://cdn.discordapp.com/attachments/654613346452242434/1007930690450501652/unknown.png)
+![Database schema](https://cdn.discordapp.com/attachments/654613346452242434/1008326874700718130/unknown.png)

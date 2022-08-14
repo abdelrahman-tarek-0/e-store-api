@@ -27,7 +27,7 @@ const getCart = async (req, res, next) => {
 
 const createCart = async (req, res, next) => {
    try {
-      const cart = await CartModel.createCart(req.body.id, req.body.items)
+      const cart = await CartModel.createCart(req.body.id)
       res.json(resBuilder(cart))
       return
    } catch (error) {
@@ -36,7 +36,7 @@ const createCart = async (req, res, next) => {
 }
 const updateCart = async (req, res, next) => {
    try {
-      const cart = await CartModel.updateCart(req.body.id, req.body.items)
+      const cart = await CartModel.updateCart(req.body.id, req.body.item_id,req.body.action,req.body.quantity)
       res.json(resBuilder(cart))
       return
    } catch (error) {

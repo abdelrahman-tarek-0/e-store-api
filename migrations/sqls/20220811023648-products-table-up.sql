@@ -1,8 +1,8 @@
 CREATE TABLE products(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE,
-    rating smallint NOT NULL CHECK(rating >= 0 AND rating <= 5),
-    price INT NOT NULL,
+    rating real NOT NULL CHECK(rating >= 0 AND rating <= 5),
+    price float8 NOT NULL,
     description VARCHAR(255) NOT NULL,
     images TEXT[] NOT NULL,
     stock INT NOT NULL,
