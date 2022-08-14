@@ -2,7 +2,7 @@
 
 _Get all product [no auth required]_
 ```http
-GET /api/products/all
+GET /api/product/all
 ```
 
 - returning "json"
@@ -44,7 +44,7 @@ GET /api/products/all
 
 _Get one product [no auth required]_
 ```http
-GET /api/products?id=3
+GET /api/product?id=3
 ```
 - id query for the product  
 
@@ -77,7 +77,7 @@ GET /api/products?id=3
 _Create product [admin token required]_
 
 ```http
-POST /api/products/
+POST /api/product/
 ```
 - headers for the request
 
@@ -109,7 +109,7 @@ POST /api/products/
 _Update product [admin token required]_
 
 ```http
-PATCH /api/products/
+PATCH /api/product/
 ```
 - headers for the request
 
@@ -141,7 +141,7 @@ PATCH /api/products/
 _Delete product [admin token required]_
 
 ```http
-DELETE /api/products/
+DELETE /api/product/
 ```
 - headers for the request
 
