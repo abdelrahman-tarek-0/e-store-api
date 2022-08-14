@@ -564,7 +564,7 @@ DELETE /api/cart/
 - user_id `(integer)`
 - created_at `(string)`
 
-## Cart_Product
+### Cart_Product
 
 - cart_id `(integer)`
 - product_id `(integer)`
