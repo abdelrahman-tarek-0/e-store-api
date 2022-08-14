@@ -26,7 +26,10 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req, res) => {
-   res.json({ message: 'hi! refer to the documentation at <https://github.com/abdelrahman-tarek-0/e-store-api/blob/main/Endpoints.md>' })
+   res.json({
+      message:
+         'hi! refer to the documentation at <https://github.com/abdelrahman-tarek-0/e-store-api/blob/main/Endpoints.md>',
+   })
 })
 
 app.use('/api', routes)
@@ -35,7 +38,8 @@ app.use('/api', routes)
 app.use(errorHandlerMiddleware)
 app.use((_req, res) => {
    res.status(404).json({
-      message: 'API route not found (check the documentation <https://github.com/abdelrahman-tarek-0/e-store-api/blob/main/Endpoints.md>)',
+      message:
+         'API route not found (check the documentation <https://github.com/abdelrahman-tarek-0/e-store-api/blob/main/Endpoints.md>)',
    })
 })
 

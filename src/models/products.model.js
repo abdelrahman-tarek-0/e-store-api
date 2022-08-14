@@ -6,7 +6,7 @@ class ProductsModel {
    }
 
    // get all products
-   async getAllProducts(limit = 50, offset = 0,sort = 'DESC') {
+   async getAllProducts(limit = 50, offset = 0, sort = 'DESC') {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
@@ -18,7 +18,6 @@ class ProductsModel {
          connection.release()
          return result.rows
       } catch (error) {
-         connection.release()
          throw new Error(error)
       }
    }
@@ -34,7 +33,6 @@ class ProductsModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
-         connection.release()
          throw new Error(error)
       }
    }
@@ -60,7 +58,6 @@ class ProductsModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
-         connection.release()
          throw new Error(error)
       }
    }
@@ -115,7 +112,6 @@ class ProductsModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
-         connection.release()
          throw new Error(error)
       }
    }
@@ -131,7 +127,6 @@ class ProductsModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
-         connection.release()
          throw new Error(error)
       }
    }
