@@ -8,7 +8,6 @@ const getAllProducts = async (req, res, next) => {
       const limit = req.query.limit || 50
       const offset = req.query.offset || 0
       const sort = req.query.sort || 'DESC'
-      console.log(limit, offset,sort);
       const products = await ProductsModel.getAllProducts(limit, offset,sort)
       products.length === 0
          ? res.status(404).json(resBuilder('no products', 404))
