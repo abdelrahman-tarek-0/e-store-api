@@ -2,8 +2,17 @@
 
 _Get all product [no auth required]_
 ```http
-GET /api/product/all
+GET /api/product/all?limit=3&offset=0&sort=ASC
 ```
+- take query parameters:
+
+    | query     | Type            | description                             | optional |
+    | :-------- | :-------------- | :-------------------------------------- | :------- |
+    | `limit`   | `integer`       | `limit the number of products returned` | `true`   |
+    | `offset`  | `integer`       | `the start index`                       | `true`   |
+    | `sort`    | `{DESC or ASC}` | `get from the end or from the start sorted by date of the add`                       | `true - default "DESC"`   |
+
+
 
 - returning "json"
     ```json

@@ -6,10 +6,15 @@ class ProductsModel {
    }
 
    // get all products
-   async getAllProducts() {
+   async getAllProducts(limit = 50, offset = 0,sort = 'DESC') {
       try {
          const connection = await this.db.connect()
-         const result = await connection.query('SELECT * FROM products')
+         const result = await connection.query(
+            `SELECT * FROM products
+            ORDER BY id ${sort.toUpperCase()}
+            LIMIT $1 OFFSET $2`,
+            [limit, offset]
+         )
          connection.release()
          return result.rows
       } catch (error) {
