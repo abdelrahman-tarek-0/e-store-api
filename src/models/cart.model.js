@@ -28,7 +28,7 @@ class cartModel {
          )
          connection.release()
 
-         return result.rows[0]
+         return result.rows[0].cart
       } catch (error) {
          throw new Error(error)
       }

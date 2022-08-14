@@ -416,8 +416,7 @@ GET /api/cart?id=1
     ```json
     {
         "status": 200,
-        "message": {
-            "cart": [
+        "message":  [
                 {
                     "id": 1,
                     "name": "...",
@@ -447,7 +446,6 @@ GET /api/cart?id=1
                     "description": "adwadaw"
                 }
             ]
-        }
     }
     ```
 
