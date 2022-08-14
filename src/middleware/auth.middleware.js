@@ -11,6 +11,7 @@ async function getAdmins() {
       connection.release()
       return result.rows
    } catch (error) {
+      connection.release()
       throw new Error(error)
    }
 }

@@ -22,9 +22,10 @@ class cartModel {
             [userId]
          )
          connection.release()
-
+         
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -68,6 +69,7 @@ class cartModel {
          connection2.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -82,6 +84,7 @@ class cartModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -95,6 +98,7 @@ class cartModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }

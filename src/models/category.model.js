@@ -13,6 +13,7 @@ class CategoryModel {
          connection.release()
          return result.rows
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -28,6 +29,7 @@ class CategoryModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -45,6 +47,7 @@ class CategoryModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -62,6 +65,7 @@ class CategoryModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
@@ -79,6 +83,7 @@ class CategoryModel {
          connection.release()
          return result.rows[0]
       } catch (error) {
+         connection.release()
          throw new Error(error)
       }
    }
