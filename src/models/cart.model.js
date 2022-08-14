@@ -22,8 +22,24 @@ class cartModel {
             [userId]
          )
          connection.release()
+         result.rows[0].items = JSON.parse(result.rows[0].items)
+
+         let itemsIds = Object.keys(result.rows[0].items)
+         let itemsQuantity = Object.values(result.rows[0].items)
+         let items = []
          
-         return result.rows[0]
+         for (let i = 0; i < itemsIds.length; i++) {
+            let item = await connection.query(
+               `SELECT * FROM products WHERE id = $1`,
+               [itemsIds[i]]
+            )
+            connection.release()
+            items.push({
+               quantity: itemsQuantity[i],
+               product: item.rows[0],
+            })
+         }
+         return items
       } catch (error) {
          connection.release()
          throw new Error(error)
@@ -38,25 +54,25 @@ class cartModel {
          const productIds = products.rows.map((product) => product.id)
 
          const itemsArray = Object.keys(items)
-         const itemsId = itemsArray.map(Number)
 
-         const itemValues = Object.values(items)
-         for (let i = 0; i < itemsId.length; i++) {
-            if (!productIds.includes(itemsId[i])) {
-               throw new Error(`Product with id: ${itemsId[i]}  does not exist`)
+         const itemsIds = itemsArray.map(Number)
+         const itemsQuantity = Object.values(items)
+         for (let i = 0; i < itemsIds.length; i++) {
+            if (!productIds.includes(itemsIds[i])) {
+               throw new Error(`Product with id: ${itemsIds[i]}  does not exist`)
             } else {
                if (
-                  itemValues[i] >
-                  products.rows.find((product) => product.id === itemsId[i])
+                  itemsQuantity[i] >
+                  products.rows.find((product) => product.id === itemsIds[i])
                      .stock
                ) {
                   throw new Error(
                      'Not enough stock for product: ' +
                         products.rows.find(
-                           (product) => product.id === itemsId[i]
+                           (product) => product.id === itemsIds[i]
                         ).name +
                         ' -- with id ' +
-                        itemsId[i]
+                        itemsIds[i]
                   )
                }
             }
