@@ -524,7 +524,7 @@ DELETE /api/cart/
 
     | body            | Type     | Description                                             |
     | :---------------| :------- | :-------------------------------------------------- |
-    | `id`            | `integer`| `id of the user created the cart not id of the cart`|
+    | `id`            | `string`| `id of the user created the cart not id of the cart`|
 
 
 - returning "json"
