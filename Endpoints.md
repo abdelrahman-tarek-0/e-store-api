@@ -493,7 +493,7 @@ PATCH /api/cart/
 
     | body            | Type     |optional  | Description                                    |
     | :---------------| :------- |:-------- | :--------------------------------------------- |
-    | `id`            | `integer`| `id of the user created the cart not id of the cart`|
+    | `id`            | `integer`| false|`id of the user created the cart not id of the cart`|
     | `items_id`      | `integer`|false     | `id of the item you want to update in the cart`|
     | `action`        | `add,remove,delete`|false     | `add product (quantity if exist) or remove product (remove it if quantity 0) or delete the product from the cart `|
     | `quantity`      | `integer`|true     | `quantity of the item you want to update in the cart (on add or remove) default is 1`|
