@@ -27,8 +27,11 @@ class cartModel {
             [userId]
          )
          connection.release()
-         
-         return result.rows[0]
+         if (result.rows.length > 0) {
+            return result.rows[0].cart
+         }else {
+            return []
+         }
       } catch (error) {
          throw new Error(error)
       }
