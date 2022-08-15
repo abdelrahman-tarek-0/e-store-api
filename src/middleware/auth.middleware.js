@@ -1,16 +1,16 @@
-const {checkUser} = require('../helpers/userHelper')
+const { checkUser } = require('../helpers/userHelper')
 
 const authAdminMiddleware = async (req, res, next) => {
    try {
-      let token = req.headers.authorization
+      const token = req.headers.authorization
       if (!token) {
-         throw {status:401,message:'No token provided.'}
+         throw { status: 401, message: 'No token provided.' }
       } else {
-         if(await checkUser(token,req.body.id,true)){
+         if (await checkUser(token, req.body.id, true)) {
             next()
-         }else{
-            throw {status: 401, message: 'Unauthorized'}
-         }    
+         } else {
+            throw { status: 401, message: 'Unauthorized' }
+         }
       }
    } catch (error) {
       next(error)
@@ -18,15 +18,15 @@ const authAdminMiddleware = async (req, res, next) => {
 }
 const authUserMiddleware = async (req, res, next) => {
    try {
-      let token = req.headers.authorization
+      const token = req.headers.authorization
       if (!token) {
-         throw {status:401,message:'No token provided.'}
+         throw { status: 401, message: 'No token provided.' }
       } else {
-         if(await checkUser(token,req.body.id)){
+         if (await checkUser(token, req.body.id)) {
             next()
-         }else{
-            throw {status: 401, message: 'Unauthorized'}
-         }    
+         } else {
+            throw { status: 401, message: 'Unauthorized' }
+         }
       }
    } catch (error) {
       next(error)

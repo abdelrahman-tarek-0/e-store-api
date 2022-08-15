@@ -29,7 +29,7 @@ class cartModel {
          connection.release()
          if (result.rows.length > 0) {
             return result.rows[0].cart
-         }else {
+         } else {
             return []
          }
       } catch (error) {
