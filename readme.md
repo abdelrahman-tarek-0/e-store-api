@@ -31,7 +31,7 @@ firebase is handling user auth for us<br>
 
 ## Database
 - after downloading PostgreSql and install it
-- run the following command to create the database:
+- run the following command to connect to postgres:
 
     ```pash
         psql -U postgres
