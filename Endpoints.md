@@ -10,7 +10,7 @@ GET /api/product/all?limit=3&offset=0&sortBy=price&sort=ASC
     | :-------- | :-------------- | :-------------------------------------- | :------- |
     | `limit`   | `integer`       | `limit the number of products returned` | `true - default "50"`   |
     | `offset`  | `integer`       | `the start index`                       | `true - default "0"`    |
-    | `sortBy`    | `{id,price,rating,stock,created_at}`      | `sort by id (added date) , price , rating , stock or created_at (same output as id) ` | `true - default "id"` |
+    | `sortBy`    | `{name,id,price,rating,stock,created_at}`      | `sort by name, id (added date) , price , rating , stock or created_at (same output as id) ` | `true - default "id"` |
     | `sort`    | `{DESC or ASC}` | `get from the end or from the start sorted by date of the add`                       | `true - default "DESC"`   |
 
 
