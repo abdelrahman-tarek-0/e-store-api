@@ -23,6 +23,7 @@ app.use(
 
 app.use(helmet())
 app.use(express.json())
+app.use(express.urlencoded())
 app.use(cors())
 
 app.get('/', (req, res) => {
