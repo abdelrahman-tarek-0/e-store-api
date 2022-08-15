@@ -466,7 +466,7 @@ POST /api/cart/
 
     | body            | Type     | Description                        |
     | :---------------| :------- | :--------------------------------- |
-    | `id`       | `string` |`user id`
+    | `id`       | `string` |`user id`|
 
 - returning "json"
     ```json
