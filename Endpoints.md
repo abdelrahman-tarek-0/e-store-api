@@ -6,7 +6,7 @@ GET /api/product/all?limit=3&offset=0&sortBy=price&sort=ASC
 ```
 - take query parameters:
 
-        | query     | Type            | description                             | optional |
+    | query     | Type            | description                             | optional |
     | :-------- | :-------------- | :-------------------------------------- | :------- |
     | `limit`   | `integer`       | `limit the number of products returned` | `true - default "50"`   |
     | `offset`  | `integer`       | `the start index`                       | `true - default "0"`    |
