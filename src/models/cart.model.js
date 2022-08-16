@@ -61,7 +61,13 @@ class cartModel {
          // increase quantity of product by one
          if (action == 'add') {
             result = await connection.query(
-               'INSERT INTO cart_product (cart_id,product_id,quantity) VALUES ((SELECT id FROM cart WHERE user_id = $1),$2,1) on conflict(hashed_cart_id) do UPDATE SET quantity = cart_product.quantity + $3 WHERE cart_product.cart_id = (SELECT id FROM cart WHERE user_id = $1) AND cart_product.product_id = $2',
+               `INSERT INTO cart_product (cart_id,product_id,quantity)
+               VALUES ((SELECT id FROM cart WHERE user_id = $1),$2,(case when $3 < (select stock from products where products.id = $2) then $3 else (select stock from products where products.id = $2) end))
+                 on conflict(hashed_cart_id) do UPDATE SET 
+                 quantity = CASE WHEN (cart_product.quantity + $3) < (select stock from products where products.id = $2) 
+                 THEN cart_product.quantity + $3
+                 ELSE (select stock from products where products.id = $2)
+              END WHERE cart_product.cart_id = (SELECT id FROM cart WHERE user_id = $1) AND cart_product.product_id = $2`,
                [userId, itemId, quantity]
             )
          }
