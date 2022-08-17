@@ -130,6 +130,7 @@ PATCH /api/product/
 
     | body            | Type     |optional  |
     | :---------------| :------- |:-------- |
+    | `id (id of product)` | `number` |false     |
     | `name`          | `string` |true      |
     | `rating`        | `float`  |true      |
     | `price`         | `integer`|true      |
