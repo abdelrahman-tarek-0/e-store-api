@@ -7,6 +7,7 @@ if (config.env === 'production' || config.env === 'prod') {
       ssl: {
          rejectUnauthorized: false,
       },
+      idleTimeoutMillis: 5000
    }
 } else {
    dbConfig = {
@@ -15,6 +16,7 @@ if (config.env === 'production' || config.env === 'prod') {
       host: config.db_host,
       port: config.db_port,
       database: config.db_name,
+      idleTimeoutMillis: 5000
    }
 }
 
