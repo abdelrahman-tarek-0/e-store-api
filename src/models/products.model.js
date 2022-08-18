@@ -63,6 +63,7 @@ class ProductsModel {
    // update a product
    async updateProduct(id, product) {
       try {
+         console.log(id);
          const connection = await this.db.connect()
          let query = 'UPDATE products SET '
          const values = []
@@ -104,10 +105,15 @@ class ProductsModel {
          }
          query = query.slice(0, -1)
          query += ' WHERE id = $' + i
+         query += ' RETURNING *'
          values.push(id)
          const result = await connection.query(query, values)
          connection.release()
-         return result.rows[0]
+         if (result.rows.length === 0) {
+            throw new Error('Product not found')
+         }else{
+            return
+         }
       } catch (error) {
          throw new Error(error)
       }
@@ -118,11 +124,15 @@ class ProductsModel {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
-            'DELETE FROM products WHERE id = $1 ',
+            'DELETE FROM products WHERE id = $1 RETURNING *',
             [id]
          )
          connection.release()
-         return result.rows[0]
+         if (result.rows.length === 0) {
+            throw new Error('Product not found')
+         }else{
+            return
+         }
       } catch (error) {
          throw new Error(error)
       }

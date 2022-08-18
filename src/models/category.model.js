@@ -55,12 +55,16 @@ class CategoryModel {
          const connection = await this.db.connect()
          const result = await connection.query(
             `UPDATE category SET name = $1
-            WHERE id = $2 
+            WHERE id = $2  RETURNING *
             `,
             [category.name, id]
          )
          connection.release()
-         return result.rows[0]
+         if (result.rows.length === 0) {
+            throw new Error('Category not found')
+         }else{
+            return
+         }
       } catch (error) {
          throw new Error(error)
       }
@@ -72,12 +76,16 @@ class CategoryModel {
          const connection = await this.db.connect()
          const result = await connection.query(
             `DELETE FROM category
-            WHERE id = $1 
+            WHERE id = $1 RETURNING *
             `,
             [id]
          )
          connection.release()
-         return result.rows[0]
+         if (result.rows.length === 0) {
+            throw new Error('Category not found')
+         }else{
+            return
+         }
       } catch (error) {
          throw new Error(error)
       }

@@ -110,7 +110,7 @@ POST /api/product/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the product created
+
     }
     ```
 <hr />
@@ -143,7 +143,7 @@ PATCH /api/product/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the product updated
+
     }
     ```
 <hr />
@@ -169,7 +169,7 @@ DELETE /api/product/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the product deleted
+
     }
     ```
 <hr />
@@ -247,7 +247,7 @@ POST /api/category/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the category created
+
     }
     ```
 
@@ -274,7 +274,7 @@ PATCH /api/category/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the category updated
+
     }
     ```
 
@@ -301,7 +301,7 @@ DELETE /api/category/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the category deleted
+
     }
     ```
 
@@ -472,7 +472,7 @@ POST /api/cart/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the cart created
+
     }
     ```
 
@@ -503,7 +503,7 @@ PATCH /api/cart/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the cart updated
+
     }
     ```
 
@@ -531,7 +531,7 @@ DELETE /api/cart/
     ```json
     {
         "status": 200,
-        "message": {} // returning json object of the cart deleted
+
     }
     ```
 

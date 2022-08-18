@@ -94,11 +94,15 @@ class cartModel {
          ) {
             const connection = await this.db.connect()
             const result = await connection.query(
-               'DELETE FROM cart_product WHERE cart_id = (SELECT id FROM cart WHERE user_id = $1) AND product_id = $2',
+               'DELETE FROM cart_product WHERE cart_id = (SELECT id FROM cart WHERE user_id = $1) AND product_id = $2 RETURNING *',
                [userId, itemId]
             )
             connection.release()
-            return result.rows[0]
+            if (result.rows.length === 0) {
+               throw new Error('Product not found')
+            }else{
+               return []
+            }
          } else {
             throw new Error(error)
          }
@@ -108,7 +112,7 @@ class cartModel {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
-            'DELETE FROM cart_product WHERE cart_id = (select id from cart where user_id = $1) ',
+            'DELETE FROM cart_product WHERE cart_id = (select id from cart where user_id = $1) RETURNING *',
             [userId]
          )
          connection.release()
