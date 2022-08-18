@@ -37,7 +37,7 @@ const createCart = async (req, res, next) => {
 const updateCart = async (req, res, next) => {
    try {
       const cart = await CartModel.updateCart(
-         req.body.id,
+         req.body.user_id,
          req.body.item_id,
          req.body.action,
          req.body.quantity

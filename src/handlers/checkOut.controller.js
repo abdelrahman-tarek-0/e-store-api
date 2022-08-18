@@ -4,8 +4,8 @@ const CheckOutModel = new checkOutModel()
 
 const checkOut = async (req, res, next) => {
     try {
-        const cart = await CheckOutModel.checkOut(req.body.user_id)
-        res.json(resBuilder(cart))
+        const check = await CheckOutModel.checkOut(req.body.user_id)
+        res.json(resBuilder(check))
         return
     } catch (error) {
         next(error)

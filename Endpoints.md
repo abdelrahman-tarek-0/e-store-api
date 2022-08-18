@@ -539,6 +539,34 @@ DELETE /api/cart/
     
 <hr />
 
+# Checkout
+
+_Checkout [USER token required]_
+
+```http
+POST /api/checkout/
+```
+
+- headers for the request
+
+    | Header          | Type     | Description                        |
+    | :-------------- | :------- | :--------------------------------- |
+    | `Authorization` | `string` | `need USER token `                 |
+
+- body "json" type needed
+
+    | body            | Type     | Description                                             |
+    | :---------------| :------- | :------------------------------------------------------ |
+    | `user_id`       | `string`| `id of the user to checkout`                             |
+
+- returning "json"
+    ```json
+    {
+        "status": 200,
+        "message": "Checkout Successful"
+    }
+    ```
+
 ## Data Shapes
 
 ### Product

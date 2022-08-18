@@ -98,11 +98,6 @@ class cartModel {
                [userId, itemId]
             )
             connection.release()
-            if (result.rows.length === 0) {
-               throw new Error('Product not found')
-            }else{
-               return []
-            }
          } else {
             throw new Error(error)
          }

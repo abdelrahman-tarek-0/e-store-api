@@ -63,7 +63,6 @@ class ProductsModel {
    // update a product
    async updateProduct(id, product) {
       try {
-         console.log(id);
          const connection = await this.db.connect()
          let query = 'UPDATE products SET '
          const values = []
