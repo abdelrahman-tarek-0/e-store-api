@@ -104,7 +104,7 @@ class ProductsModel {
          }
          query = query.slice(0, -1)
          query += ' WHERE id = $' + i
-         query += ' RETURNING *'
+         query += ' '
          values.push(id)
          const result = await connection.query(query, values)
          connection.release()
@@ -119,7 +119,7 @@ class ProductsModel {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
-            'DELETE FROM products WHERE id = $1 RETURNING *',
+            'DELETE FROM products WHERE id = $1 ',
             [id]
          )
          connection.release()

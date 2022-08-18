@@ -41,7 +41,7 @@ class cartModel {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
-            'INSERT INTO cart(user_id) VALUES($1) RETURNING *',
+            'INSERT INTO cart(user_id) VALUES($1) ',
             [userId]
          )
          connection.release()
@@ -108,7 +108,7 @@ class cartModel {
       try {
          const connection = await this.db.connect()
          const result = await connection.query(
-            'DELETE FROM cart_product WHERE cart_id = (select id from cart where user_id = $1) RETURNING *',
+            'DELETE FROM cart_product WHERE cart_id = (select id from cart where user_id = $1) ',
             [userId]
          )
          connection.release()

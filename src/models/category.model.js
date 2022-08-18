@@ -38,7 +38,7 @@ class CategoryModel {
          const connection = await this.db.connect()
          const result = await connection.query(
             `INSERT INTO category (name)
-            VALUES ($1) RETURNING *
+            VALUES ($1) 
             `,
             [category.name]
          )
@@ -55,7 +55,7 @@ class CategoryModel {
          const connection = await this.db.connect()
          const result = await connection.query(
             `UPDATE category SET name = $1
-            WHERE id = $2 RETURNING *
+            WHERE id = $2 
             `,
             [category.name, id]
          )
@@ -72,7 +72,7 @@ class CategoryModel {
          const connection = await this.db.connect()
          const result = await connection.query(
             `DELETE FROM category
-            WHERE id = $1 RETURNING *
+            WHERE id = $1 
             `,
             [id]
          )
