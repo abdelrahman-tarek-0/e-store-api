@@ -5,7 +5,7 @@ CREATE TABLE products(
     price float8 NOT NULL,
     description VARCHAR(255) NOT NULL,
     images TEXT[] NOT NULL,
-    stock INT NOT NULL,
+    stock INT NOT NULL CHECK (stock >= 0),
     category_id BIGINT REFERENCES category(id),
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

@@ -92,7 +92,7 @@ class ProductsModel {
             values.push(product.images)
             i++
          }
-         if (product.stock) {
+         if (product.stock || product.stock === 0) {
             query += ' stock = $' + i + ','
             values.push(product.stock)
             i++

@@ -4,15 +4,16 @@ const authAdminMiddleware = async (req, res, next) => {
    try {
       const token = req.headers.authorization
       if (!token) {
-         throw { status: 401, message: 'No token provided.' }
+         throw new Error('No token provided.')
       } else {
          if (await checkUser(token, req.body.id, true)) {
             next()
          } else {
-            throw { status: 401, message: 'Unauthorized' }
+            throw new Error('Unauthorized')
          }
       }
    } catch (error) {
+      error.status = 401
       next(error)
    }
 }
@@ -20,15 +21,16 @@ const authUserMiddleware = async (req, res, next) => {
    try {
       const token = req.headers.authorization
       if (!token) {
-         throw { status: 401, message: 'No token provided.' }
+         throw new Error('No token provided.')
       } else {
          if (await checkUser(token, req.body.id)) {
             next()
          } else {
-            throw { status: 401, message: 'Unauthorized' }
+            throw new Error('Unauthorized')
          }
       }
    } catch (error) {
+      error.status = 401
       next(error)
    }
 }
