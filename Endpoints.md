@@ -410,7 +410,7 @@ GET /api/cart?id="ahmed"
 
     | query           | Type     | details                                             |
     | :---------------| :------- | :-------------------------------------------------- |
-    | `id`            | `string`| `id of the user created the cart not id of the cart`|
+    | `user_id`            | `string`| `id of the user created the cart not id of the cart`|
 
 - returning "json" 
     ```json
@@ -466,7 +466,7 @@ POST /api/cart/
 
     | body            | Type     | Description                        |
     | :---------------| :------- | :--------------------------------- |
-    | `id`       | `string` |`user id`|
+    | `user_id`       | `string` |`user id`|
 
 - returning "json"
     ```json
@@ -493,7 +493,7 @@ PATCH /api/cart/
 
     | body            | Type     |optional  | Description                                    |
     | :---------------| :------- |:-------- | :--------------------------------------------- |
-    | `id`            | `string`| false|`id of the user created the cart not id of the cart`|
+    | `user_id`            | `string`| false|`id of the user created the cart not id of the cart`|
     | `item_id`      | `integer`|false     | `id of the item you want to update in the cart`|
     | `action`        | `add,remove,delete`|false     | `add product (quantity if exist) or remove product (remove it if quantity 0) or delete the product from the cart `|
     | `quantity`      | `integer`|true     | `quantity of the item you want to update in the cart (on add or remove) default is 1`|
@@ -524,7 +524,7 @@ DELETE /api/cart/
 
     | body            | Type     | Description                                             |
     | :---------------| :------- | :-------------------------------------------------- |
-    | `id`            | `string`| `id of the user created the cart not id of the cart`|
+    | `user_id`            | `string`| `id of the user created the cart not id of the cart`|
 
 
 - returning "json"
