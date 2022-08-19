@@ -6,7 +6,7 @@ const authAdminMiddleware = async (req, res, next) => {
       if (!token) {
          throw new Error('No token provided.')
       } else {
-         if (await checkUser(token, req.body.user_id, true)) {
+         if (await checkUser(token, req.body.user_id || req.query.user_id, true)) {
             next()
          } else {
             throw new Error('Unauthorized')
@@ -23,7 +23,7 @@ const authUserMiddleware = async (req, res, next) => {
       if (!token) {
          throw new Error('No token provided.')
       } else {
-         if (await checkUser(token, req.body.user_id)) {
+         if (await checkUser(token, req.body.user_id || req.query.user_id)) {
             next()
          } else {
             throw new Error('Unauthorized')
